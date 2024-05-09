@@ -2,27 +2,28 @@ package com.github.beetv.spider
 
 interface Spider {
 
-    suspend fun listCategory(): List<Category>
+    suspend fun fetchHotSearchKeyword(): List<String>
 
-    suspend fun pageMediaByCategory(
+    suspend fun fetchCategory(): List<Category>
+
+    suspend fun fetchCategoryWithMedia(): List<CategoryWithSimpleMedia>
+
+    suspend fun fetchMediaByCategory(
         categoryId: String,
         pageNum: Long,
         pageSize: Long
     ): Page<SimpleMedia>
 
-    suspend fun pageMediaByTopN(pageNum: Long, pageSize: Long): Page<SimpleMedia>
+    suspend fun fetchMediaByTopN(pageNum: Long, pageSize: Long): List<SimpleMedia>
 
-    suspend fun listHotSearchKeyword(): List<String>
+    suspend fun fetchMediaById(mediaId: String): Media?
 
-    suspend fun pageMediaBySearch(keyword: String, pageNum: Long, pageSize: Long): Page<SimpleMedia>
-
-    suspend fun getMediaById(mediaId: String): Media?
+    suspend fun searchMedia(keyword: String, pageNum: Long, pageSize: Long): Page<SimpleMedia>
 }
 
 data class Category(
     val id: String,
     val name: String,
-    val attachment: String? = null
 )
 
 data class SimpleMedia(
@@ -40,6 +41,11 @@ data class Media(
     val releaseYear: Int?,
     val originCountry: String?,
     val sources: List<Source>
+)
+
+data class CategoryWithSimpleMedia(
+    val category: Category,
+    val media: SimpleMedia
 )
 
 data class Source(
