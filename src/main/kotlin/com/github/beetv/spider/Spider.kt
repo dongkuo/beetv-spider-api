@@ -45,7 +45,7 @@ data class Media(
 
 data class CategoryWithSimpleMedia(
     val category: Category,
-    val media: List<SimpleMedia>
+    val medias: List<SimpleMedia>
 )
 
 data class Source(
