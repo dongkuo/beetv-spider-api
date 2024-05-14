@@ -30,6 +30,7 @@ data class SimpleMedia(
     val id: String,
     val name: String,
     val cover: String,
+    val remark: String,
 )
 
 data class Media(
