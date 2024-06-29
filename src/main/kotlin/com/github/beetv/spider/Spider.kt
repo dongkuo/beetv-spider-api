@@ -41,13 +41,15 @@ data class Media(
     val category: Category?,
     val releaseYear: Int?,
     val originCountry: String?,
-    val sources: List<Source>
+    val sourceGroups: List<SourceGroup>
 )
 
 data class CategoryWithSimpleMedia(
     val category: Category,
     val medias: List<SimpleMedia>
 )
+
+data class SourceGroup(val name: String, val sources: List<Source>)
 
 data class Source(
     val name: String,
