@@ -19,6 +19,8 @@ interface Spider {
     suspend fun fetchMediaById(mediaId: String): Media?
 
     suspend fun searchMedia(keyword: String, pageNum: Long, pageSize: Long): Page<SimpleMedia>
+
+    suspend fun resolveMediaUrl(url: String): String
 }
 
 data class Category(
