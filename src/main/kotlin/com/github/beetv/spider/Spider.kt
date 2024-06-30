@@ -49,7 +49,7 @@ data class CategoryWithSimpleMedia(
     val medias: List<SimpleMedia>
 )
 
-data class SourceGroup(val name: String, val sources: List<Source>)
+data class SourceGroup(val name: String, val sources: List<String>)
 
 data class Source(
     val name: String,
